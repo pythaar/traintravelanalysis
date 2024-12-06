@@ -1,0 +1,4 @@
+.env/
+appLogs.log
+*.json
+nohup.out
