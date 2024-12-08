@@ -1,4 +1,4 @@
 .env/
 appLogs.log
-*.json
+*.csv
 nohup.out
