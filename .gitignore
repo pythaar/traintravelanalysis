@@ -2,3 +2,5 @@
 appLogs.log
 *.csv
 nohup.out
+*.json
+!stationDatabase.json
