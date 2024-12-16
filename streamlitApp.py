@@ -5,8 +5,6 @@ import pandas as pd
 import streamlit as st
 from datetime import datetime, timedelta, date
 
-STATION_DB = "stationDatabase.json"
-
 def createJsonIfNot(file_path):
     
     json_dict = []
@@ -47,12 +45,12 @@ def toDict(origin, destination, date, departure, arrival, train_type, price):
     
     return new_train
 
-def addNewTrain(temp_db_path):
+def addNewTrain(temp_db_path, station_db):
     
     with open(temp_db_path, 'r') as json_file:
         temp_db = json.load(json_file)
         
-    with open(STATION_DB, 'r') as json_file:
+    with open(station_db, 'r') as json_file:
         station_db = json.load(json_file)
         
     add_train = st.expander('Add a train to database')
@@ -153,14 +151,16 @@ def main():
     st.subheader('New train')
     
     #Make sure json exists
-    temp_db_path = 'tempDatabase.json'
-    db_path = 'database.json'
+    workdir = os.path.dirname(os.path.abspath(__file__))
+    temp_db_path = os.path.join(workdir,'tempDatabase.json')
+    db_path = os.path.join(workdir, 'database.json')
+    station_db = os.path.join(workdir, "stationDatabase.json")
     createJsonIfNot(temp_db_path)
     createJsonIfNot(db_path)
     
     tab1, tab2 = st.tabs(["Add train", "See database"])
     with tab1:
-        addNewTrain(temp_db_path)
+        addNewTrain(temp_db_path, station_db)
         
         st.subheader('Trains to be updated')
         displayTempDB(temp_db_path)
