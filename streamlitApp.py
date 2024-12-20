@@ -60,7 +60,7 @@ def addNewTrain(temp_db_path, station_db):
     date = add_train.date_input('Date', format='DD/MM/YYYY')
     departure = add_train.time_input('Departure Time')
     arrival = add_train.time_input('Arrival Time (Planned)')
-    train_type = add_train.selectbox("Train type", ("TER HDF", "TGV INOUI", "BREIZHGO", "OUIGO"))
+    train_type = add_train.selectbox("Train type", ("TER HDF", "TGV INOUI", "BREIZHGO", "OUIGO", "Eurostar"))
     price = add_train.number_input('Price')
     if add_train.button('Add train'):
         new_train = toDict(origin, destination, date, departure, arrival, train_type, price)
@@ -70,6 +70,54 @@ def addNewTrain(temp_db_path, station_db):
             with open(temp_db_path, 'w') as json_file:
                 json.dump(temp_db, json_file)
             st.rerun()
+            
+def lilleaulnoye(temp_db_path):
+    
+    today = date.today()
+    if st.button("Add Lille-Aulnoye"):
+        
+        with open(temp_db_path, 'r') as json_file:
+            temp_db = json.load(json_file)
+        
+        new_train = {}
+        new_train["Origin"] = "Lille"
+        new_train["Destination"] = "Aulnoye-Aymeries"
+        new_train["Day"] = str(today.day)
+        new_train["Month"] = str(today.month)
+        new_train["Year"] = str(today.year)
+        new_train["Departure"] = "07:05"
+        new_train["Arrival"] = "08:07"
+        new_train["Type"] = "TER HDF"
+        new_train["Price"] = 3.35
+        
+        temp_db.append(new_train)
+        with open(temp_db_path, 'w') as json_file:
+                json.dump(temp_db, json_file)
+        st.rerun()
+    if st.button("Add Aulnoye-Lille"):
+        
+        with open(temp_db_path, 'r') as json_file:
+            temp_db = json.load(json_file)
+        
+        new_train = {}
+        new_train["Origin"] = "Aulnoye-Aymeries"
+        new_train["Destination"] = "Lille"
+        new_train["Day"] = str(today.day)
+        new_train["Month"] = str(today.month)
+        new_train["Year"] = str(today.year)
+        new_train["Departure"] = "17:52"
+        new_train["Arrival"] = "18:55"
+        new_train["Type"] = "TER HDF"
+        new_train["Price"] = 3.35
+        
+        temp_db.append(new_train)
+        with open(temp_db_path, 'w') as json_file:
+                json.dump(temp_db, json_file)
+        st.rerun()
+        
+        
+        
+        
 
 def displayTempDB(temp_db_path):
     
@@ -100,6 +148,14 @@ def getTextDelay(delay):
         return "Train delay: " + str(hours) + "h{:02}".format(mins)
     else:
         return "Train delay: " + str(mins) + " mins"
+    
+def deleteTrain(temp_db, temp_db_path, train_idx):
+
+    temp_db.pop(train_idx)
+    with open(temp_db_path, 'w') as json_file:
+        json.dump(temp_db, json_file)
+    st.rerun()
+    
         
 def updateTrain(temp_db_path, db_path):
     
@@ -109,6 +165,8 @@ def updateTrain(temp_db_path, db_path):
     if temp_db:
         n_trains = len(temp_db)
         train_idx = st.number_input("Index of train to modify", min_value=0, max_value=n_trains-1)
+        if st.button("Delete this train"):
+            deleteTrain(temp_db, temp_db_path, train_idx)
         mod_train = st.expander('Modify the train')
         train = temp_db[train_idx]
         mod_train.json(train)
@@ -167,6 +225,9 @@ def main():
         
         st.subheader('Update a train')
         updateTrain(temp_db_path, db_path)
+        
+        st.subheader('Reccurent trains')
+        lilleaulnoye(temp_db_path)
     
     with tab2:
         st.subheader("Database")

@@ -1,7 +1,7 @@
-{"stations": ["Lille", "Lorient", "Paris Gare du Nord", "Paris Montparnasse", "Rennes", "Aulnoye-Aymeries", "Abbeville", "Amiens", "Saint-Quentin", "Albert", "Corbie", "Vannes", "Valenciennes"],
- "Lille": ["Paris Gare du Nord", "Amiens", "Albert", "Corbie", "Aulnoye-Aymeries", "Valenciennes"],
+{"stations": ["Lille", "Lorient", "Paris Gare du Nord", "Paris Montparnasse", "Rennes", "Aulnoye-Aymeries", "Abbeville", "Amiens", "Saint-Quentin", "Albert", "Corbie", "Vannes", "Valenciennes", "Londres"],
+ "Lille": ["Paris Gare du Nord", "Amiens", "Albert", "Corbie", "Aulnoye-Aymeries", "Valenciennes", "Londres"],
  "Lorient": ["Paris Montparnasse", "Vannes", "Rennes"], 
- "Paris Gare du Nord": ["Lille", "Abbeville", "Amiens", "Aulnoye-Aymeries", "Valenciennes"],
+ "Paris Gare du Nord": ["Lille", "Abbeville", "Amiens", "Aulnoye-Aymeries", "Valenciennes", "Londres"],
  "Paris Montparnasse": ["Lorient", "Rennes", "Vannes"],
  "Rennes": ["Lorient", "Paris Montparnasse", "Vannes"],
  "Aulnoye-Aymeries": ["Lille", "Paris Gare du Nord", "Valenciennes", "Saint-Quentin"],
@@ -11,4 +11,5 @@
  "Albert": ["Lille", "Amiens"],
  "Corbie": ["Lille", "Amiens"],
  "Vannes": ["Lorient", "Rennes", "Paris Montparnasse"],
- "Valenciennes": ["Paris Gare du Nord", "Aulnoye-Aymeries", "Lille"]}
+ "Valenciennes": ["Paris Gare du Nord", "Aulnoye-Aymeries", "Lille"],
+ "Londres": ["Paris Gare du Nord", "Lille"]}
