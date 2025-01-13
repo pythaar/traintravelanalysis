@@ -155,7 +155,10 @@ def deleteTrain(temp_db, temp_db_path, train_idx):
     with open(temp_db_path, 'w') as json_file:
         json.dump(temp_db, json_file)
     st.rerun()
+
+def getDistance(origin, destination):
     
+    return 0   
         
 def updateTrain(temp_db_path, db_path):
     
@@ -182,6 +185,8 @@ def updateTrain(temp_db_path, db_path):
             train["RealArrival"] = real_arrival.strftime("%H:%M")
             train["Delay"] = delay
             train["Comment"] = comment
+            train["Distance"] = getDistance(train["Origin"], train["Destination"])
+            train["TravelTime"] = timeToMin(train["RealArrival"]) - timeToMin(train["Departure"])
             db.append(train)
             with open(db_path, 'w') as json_file:
                 json.dump(db, json_file)
@@ -200,6 +205,49 @@ def displayDatabase(db_path):
     else:
         st.error("No train recorded")
         
+def getStrTime(totalTime):
+    
+    days = totalTime // (24 * 60)
+    hours = (totalTime % (24 * 60)) // 60
+    minutes = totalTime % 60
+
+    return f"{days} Day, {hours} Hours and {minutes} Minutes"
+
+def displayStats(db_path):
+    
+    with open(db_path, 'r') as json_file:
+        db = json.load(json_file)
+    
+    df_db = pd.DataFrame(db)
+    
+    n_train = df_db.shape[0]
+    st.text("Total train taken: " + str(n_train))
+    st.text("Total spent (without subscriptions): " + str(round(df_db["Price"].sum())) + " €")
+    strTime = getStrTime(df_db["TravelTime"].sum())
+    st.text("Total time on train: " + strTime)
+    st.text("Distance travelled: " + str(df_db["Distance"].sum()) + " km")
+    
+    st.divider()
+    st.text("Total delay: " + str(round(df_db["Delay"].sum())))
+    st.text("Average delay: {:02}".format(df_db["Delay"].mean()))
+    st.text("Median delay: " + str(round(df_db["Delay"].median())))
+    
+    early = (df_db['Delay'] < -1).sum()
+    on_time = ((df_db['Delay'] >= -1) & (df_db['Delay'] <= 1)).sum()
+    low_delay = ((df_db['Delay'] > 1) & (df_db['Delay'] <= 5)).sum()
+    delay = ((df_db['Delay'] > 5) & (df_db['Delay'] <= 10)).sum()
+    big_delay = ((df_db['Delay'] > 10) & (df_db['Delay'] <= 30)).sum()
+    very_big_delay = (df_db['Delay'] > 30).sum()
+    
+    col1, col2, col3 = st.columns(3)
+    col4, col5, col6 = st.columns(3)
+    col1.metric("Early", early, delta=None)
+    col2.metric("On time", on_time, delta=None)
+    col3.metric("Low delay (<5 mins)", low_delay, delta=None)
+    col4.metric("Delay (Between 5 and 10 mins)", delay, delta=None)
+    col5.metric("Big delay (Between 10 and 30 mins)", big_delay, delta=None)
+    col6.metric("Very big delay (>30 mins)", very_big_delay, delta=None)
+        
 
 def main():
     st.title('Add train to database')
@@ -216,7 +264,7 @@ def main():
     createJsonIfNot(temp_db_path)
     createJsonIfNot(db_path)
     
-    tab1, tab2 = st.tabs(["Add train", "See database"])
+    tab1, tab2, tab3 = st.tabs(["Add train", "See database", "Stats"])
     with tab1:
         addNewTrain(temp_db_path, station_db)
         
@@ -233,6 +281,11 @@ def main():
         st.subheader("Database")
         displayDatabase(db_path)
     
+    with tab3:
+        st.subheader("Stats")
+        st.divider()
+        st.subheader("Global")
+        displayStats(db_path)
     
 if __name__ == "__main__":
     main()

@@ -1,5 +1,11 @@
-R0.1.0 - 12/15/2024
+R0.2.0 - 13/01/2025
+ - Add a stat page.
+ - Compute basic statistics.
+ - Add a distance = 0 in database, distance calculation to be dev.
+ - Now add time spent in train (real arrival time - departure time)
+
+R0.1.0 - 15/12/2024
  - Data input OK, via a streamlit app.
 
-R0.0.1 - 12/01/2024
+R0.0.1 - 01/12/2024
  - Initial commit
