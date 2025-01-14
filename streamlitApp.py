@@ -186,7 +186,9 @@ def updateTrain(temp_db_path, db_path):
             train["Delay"] = delay
             train["Comment"] = comment
             train["Distance"] = getDistance(train["Origin"], train["Destination"])
-            train["TravelTime"] = timeToMin(train["RealArrival"]) - timeToMin(train["Departure"])
+            arr = datetime.strptime(train["RealArrival"], "%H:%M").time()
+            dep = datetime.strptime(train["Departure"], "%H:%M").time()
+            train["TravelTime"] = timeToMin(arr) - timeToMin(dep)
             db.append(train)
             with open(db_path, 'w') as json_file:
                 json.dump(db, json_file)
@@ -228,9 +230,10 @@ def displayStats(db_path):
     st.text("Distance travelled: " + str(df_db["Distance"].sum()) + " km")
     
     st.divider()
-    st.text("Total delay: " + str(round(df_db["Delay"].sum())))
-    st.text("Average delay: {:02}".format(df_db["Delay"].mean()))
-    st.text("Median delay: " + str(round(df_db["Delay"].median())))
+    strDelay = getStrTime(df_db["Delay"].sum())
+    st.text("Total delay: " + strDelay)
+    st.text("Average delay: {:02}".format(df_db["Delay"].mean()) + " mins")
+    st.text("Median delay: " + str(round(df_db["Delay"].median())) + " mins")
     
     early = (df_db['Delay'] < -1).sum()
     on_time = ((df_db['Delay'] >= -1) & (df_db['Delay'] <= 1)).sum()
