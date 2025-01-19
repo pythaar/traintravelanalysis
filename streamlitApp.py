@@ -222,6 +222,10 @@ def getStrTime(totalTime):
 
     return f"{days} Day, {hours} Hours and {minutes} Minutes"
 
+def getStrPercent(value, n_train):
+    
+    return str(round(100*value/n_train,2)) + "%"
+
 def displayStats(db_path):
     
     with open(db_path, 'r') as json_file:
@@ -255,14 +259,21 @@ def displayStats(db_path):
     big_delay = ((df_db['Delay'] > 10) & (df_db['Delay'] <= 30)).sum()
     very_big_delay = (df_db['Delay'] > 30).sum()
     
+    early_delta = getStrPercent(early, n_train)
+    on_time_delta = getStrPercent(on_time, n_train)
+    low_delay_delta = getStrPercent(low_delay, n_train)
+    delay_delta = getStrPercent(delay, n_train)
+    big_delay_delta = getStrPercent(big_delay, n_train)
+    very_big_delay_delta = getStrPercent(very_big_delay, n_train)
+    
     col1, col2, col3 = st.columns(3)
     col4, col5, col6 = st.columns(3)
-    col1.metric("Early", early, delta=None)
-    col2.metric("On time", on_time, delta=None)
-    col3.metric("Low delay (<5 mins)", low_delay, delta=None)
-    col4.metric("Delay (Between 5 and 10 mins)", delay, delta=None)
-    col5.metric("Big delay (Between 10 and 30 mins)", big_delay, delta=None)
-    col6.metric("Very big delay (>30 mins)", very_big_delay, delta=None)
+    col1.metric("Early", early, delta=early_delta)
+    col2.metric("On time", on_time, delta=on_time_delta)
+    col3.metric("Low delay (<5 mins)", low_delay, delta=low_delay_delta, delta_color="off")
+    col4.metric("Delay (Between 5 and 10 mins)", delay, delta=delay_delta, delta_color="off")
+    col5.metric("Big delay (Between 10 and 30 mins)", big_delay, delta=big_delay_delta, delta_color="inverse")
+    col6.metric("Very big delay (>30 mins)", very_big_delay, delta=very_big_delay_delta, delta_color="inverse")
 
 def addExpenses(db_path):
     
