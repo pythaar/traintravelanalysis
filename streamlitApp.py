@@ -11,6 +11,13 @@ def createJsonIfNot(file_path):
     if not os.path.exists(file_path):
         with open(file_path, 'w') as json_file:
             json.dump(json_dict, json_file)
+
+def createDatabaseIfNot(file_path):
+    
+    json_dict = {"expenses": {"Work": 0, "TGVMAX": 0, "Cancel": 0, "Other": 0}, "trainList": []}
+    if not os.path.exists(file_path):
+        with open(file_path, 'w') as json_file:
+            json.dump(json_dict, json_file)
             
 def checkTrainStation(train_to_check, station_db):
     
@@ -189,7 +196,7 @@ def updateTrain(temp_db_path, db_path):
             arr = datetime.strptime(train["RealArrival"], "%H:%M").time()
             dep = datetime.strptime(train["Departure"], "%H:%M").time()
             train["TravelTime"] = timeToMin(arr) - timeToMin(dep)
-            db.append(train)
+            db["trainList"].append(train)
             with open(db_path, 'w') as json_file:
                 json.dump(db, json_file)
             temp_db.pop(train_idx)
@@ -201,8 +208,8 @@ def displayDatabase(db_path):
     with open(db_path, 'r') as json_file:
         db = json.load(json_file)
     
-    if db:
-        df_db = pd.DataFrame(db)
+    if db["trainList"]:
+        df_db = pd.DataFrame(db["trainList"])
         st.dataframe(df_db)
     else:
         st.error("No train recorded")
@@ -220,11 +227,17 @@ def displayStats(db_path):
     with open(db_path, 'r') as json_file:
         db = json.load(json_file)
     
-    df_db = pd.DataFrame(db)
+    df_db = pd.DataFrame(db["trainList"])
+    expenses = db["expenses"]
+    total_expenses = 0
+    for key, value in expenses.items():
+        total_expenses += value
+    
+    total_expenses += df_db["Price"].sum()
     
     n_train = df_db.shape[0]
     st.text("Total train taken: " + str(n_train))
-    st.text("Total spent (without subscriptions): " + str(round(df_db["Price"].sum())) + " €")
+    st.text("Total spent: " + str(round(total_expenses, 2)) + " €")
     strTime = getStrTime(df_db["TravelTime"].sum())
     st.text("Total time on train: " + strTime)
     st.text("Distance travelled: " + str(df_db["Distance"].sum()) + " km")
@@ -232,7 +245,7 @@ def displayStats(db_path):
     st.divider()
     strDelay = getStrTime(df_db["Delay"].sum())
     st.text("Total delay: " + strDelay)
-    st.text("Average delay: {:02}".format(df_db["Delay"].mean()) + " mins")
+    st.text("Average delay: " + str(round(df_db["Delay"].mean(), 2)) + " mins")
     st.text("Median delay: " + str(round(df_db["Delay"].median())) + " mins")
     
     early = (df_db['Delay'] < -1).sum()
@@ -250,7 +263,23 @@ def displayStats(db_path):
     col4.metric("Delay (Between 5 and 10 mins)", delay, delta=None)
     col5.metric("Big delay (Between 10 and 30 mins)", big_delay, delta=None)
     col6.metric("Very big delay (>30 mins)", very_big_delay, delta=None)
+
+def addExpenses(db_path):
+    
+    with open(db_path, 'r') as json_file:
+        db = json.load(json_file)
+    
+    expenses = db["expenses"]
+    categories = list(expenses.keys())
+    selected_cat = st.selectbox('Category', categories)
+    expense_to_add = st.number_input('Value')
+    if st.button("Add"):
+        db["expenses"][selected_cat] += expense_to_add
+        with open(db_path, 'w') as json_file:
+            json.dump(db, json_file)
+        st.rerun()
         
+    
 
 def main():
     st.title('Add train to database')
@@ -265,7 +294,7 @@ def main():
     db_path = os.path.join(workdir, 'database.json')
     station_db = os.path.join(workdir, "stationDatabase.json")
     createJsonIfNot(temp_db_path)
-    createJsonIfNot(db_path)
+    createDatabaseIfNot(db_path)
     
     tab1, tab2, tab3 = st.tabs(["Add train", "See database", "Stats"])
     with tab1:
@@ -279,6 +308,9 @@ def main():
         
         st.subheader('Reccurent trains')
         lilleaulnoye(temp_db_path)
+        
+        st.subheader('Add expense')
+        addExpenses(db_path)
     
     with tab2:
         st.subheader("Database")
