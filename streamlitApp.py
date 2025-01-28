@@ -23,7 +23,10 @@ def checkTrainStation(train_to_check, station_db):
     
     origin = train_to_check["Origin"]
     destination = train_to_check["Destination"]
-    if destination in station_db[origin] and origin in station_db[destination]:
+    list_stations = [origin, destination]
+    list_stations.sort()
+    
+    if list_stations[1] in list(station_db[list_stations[0]].keys()):
         return True
     else:
         error_db_path = 'trainError.json'
@@ -87,7 +90,7 @@ def lilleaulnoye(temp_db_path):
             temp_db = json.load(json_file)
         
         new_train = {}
-        new_train["Origin"] = "Lille"
+        new_train["Origin"] = "Lille Flandres"
         new_train["Destination"] = "Aulnoye-Aymeries"
         new_train["Day"] = str(today.day)
         new_train["Month"] = str(today.month)
@@ -95,7 +98,7 @@ def lilleaulnoye(temp_db_path):
         new_train["Departure"] = "07:05"
         new_train["Arrival"] = "08:07"
         new_train["Type"] = "TER HDF"
-        new_train["Price"] = 3.35
+        new_train["Price"] = 0
         
         temp_db.append(new_train)
         with open(temp_db_path, 'w') as json_file:
@@ -108,14 +111,14 @@ def lilleaulnoye(temp_db_path):
         
         new_train = {}
         new_train["Origin"] = "Aulnoye-Aymeries"
-        new_train["Destination"] = "Lille"
+        new_train["Destination"] = "Lille Flandres"
         new_train["Day"] = str(today.day)
         new_train["Month"] = str(today.month)
         new_train["Year"] = str(today.year)
         new_train["Departure"] = "17:52"
         new_train["Arrival"] = "18:55"
         new_train["Type"] = "TER HDF"
-        new_train["Price"] = 3.35
+        new_train["Price"] = 0
         
         temp_db.append(new_train)
         with open(temp_db_path, 'w') as json_file:
@@ -163,11 +166,18 @@ def deleteTrain(temp_db, temp_db_path, train_idx):
         json.dump(temp_db, json_file)
     st.rerun()
 
-def getDistance(origin, destination):
+def getDistance(origin, destination, db_path):
     
-    return 0   
+    with open(db_path, 'r') as json_file:
+        db = json.load(json_file)
+    
+    list_stations = [origin, destination]
+    list_stations.sort()
+    distance = db[list_stations[0]][list_stations[1]]
+    
+    return distance   
         
-def updateTrain(temp_db_path, db_path):
+def updateTrain(temp_db_path, db_path, station_db_path):
     
     with open(temp_db_path, 'r') as json_file:
         temp_db = json.load(json_file)
@@ -192,10 +202,13 @@ def updateTrain(temp_db_path, db_path):
             train["RealArrival"] = real_arrival.strftime("%H:%M")
             train["Delay"] = delay
             train["Comment"] = comment
-            train["Distance"] = getDistance(train["Origin"], train["Destination"])
+            distance = getDistance(train["Origin"], train["Destination"], station_db_path)
+            train["Distance"] = distance
             arr = datetime.strptime(train["RealArrival"], "%H:%M").time()
             dep = datetime.strptime(train["Departure"], "%H:%M").time()
-            train["TravelTime"] = timeToMin(arr) - timeToMin(dep)
+            TravelTime = timeToMin(arr) - timeToMin(dep)
+            train["TravelTime"] = TravelTime
+            train["Speed"] = round(distance/(TravelTime/60),2)
             db["trainList"].append(train)
             with open(db_path, 'w') as json_file:
                 json.dump(db, json_file)
@@ -244,7 +257,8 @@ def displayStats(db_path):
     st.text("Total spent: " + str(round(total_expenses, 2)) + " €")
     strTime = getStrTime(df_db["TravelTime"].sum())
     st.text("Total time on train: " + strTime)
-    st.text("Distance travelled: " + str(df_db["Distance"].sum()) + " km")
+    st.text("Distance travelled: " + str(round(df_db["Distance"].sum())) + " km")
+    st.text("Average speed: " + str(round(df_db["Speed"].mean(), 2)) + " km/h")
     
     st.divider()
     strDelay = getStrTime(df_db["Delay"].sum())
@@ -315,7 +329,7 @@ def main():
         displayTempDB(temp_db_path)
         
         st.subheader('Update a train')
-        updateTrain(temp_db_path, db_path)
+        updateTrain(temp_db_path, db_path, station_db)
         
         st.subheader('Reccurent trains')
         lilleaulnoye(temp_db_path)

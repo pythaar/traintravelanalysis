@@ -1,3 +1,10 @@
+R0.3.0 - 29/01/2025
+ - Station database change: Add distance. Get distance using alphabetical order (.sort() method).
+ - Distance are computed with open data sncf and carto tchoo database, using PK.
+ - Lille renamed to Lille Flandres and Lille Europe.
+ - Add Quimper and Redon.
+ - Get distance and compute speed.
+
 R0.2.1 - 14/01/2025
  - Bug fix time spent.
  - Stats improvement.
