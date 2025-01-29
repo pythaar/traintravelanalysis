@@ -5,3 +5,4 @@ nohup.out
 *.json
 !stationDatabase.json
 database_modif.py
+__pycache__
