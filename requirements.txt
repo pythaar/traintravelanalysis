@@ -1,4 +1,6 @@
 streamlit
+shinywidgets
 plotly
 pandas
 numpy
+faicons
