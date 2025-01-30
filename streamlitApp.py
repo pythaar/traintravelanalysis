@@ -209,6 +209,7 @@ def updateTrain(temp_db_path, db_path, station_db_path):
             TravelTime = timeToMin(arr) - timeToMin(dep)
             train["TravelTime"] = TravelTime
             train["Speed"] = round(distance/(TravelTime/60),2)
+            train["RelativeDuration"] = round((TravelTime / (TravelTime - delay))*100,2)
             db["trainList"].append(train)
             with open(db_path, 'w') as json_file:
                 json.dump(db, json_file)
