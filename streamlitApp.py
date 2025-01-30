@@ -45,9 +45,9 @@ def toDict(origin, destination, date, departure, arrival, train_type, price):
     new_train = {}
     new_train["Origin"] = origin
     new_train["Destination"] = destination
-    new_train["Day"] = str(date.day)
-    new_train["Month"] = str(date.month)
-    new_train["Year"] = str(date.year)
+    new_train["Day"] = int(date.day)
+    new_train["Month"] = int(date.month)
+    new_train["Year"] = int(date.year)
     new_train["Departure"] = departure.strftime("%H:%M")
     new_train["Arrival"] = arrival.strftime("%H:%M")
     new_train["Type"] = train_type
@@ -92,9 +92,9 @@ def lilleaulnoye(temp_db_path):
         new_train = {}
         new_train["Origin"] = "Lille Flandres"
         new_train["Destination"] = "Aulnoye-Aymeries"
-        new_train["Day"] = str(today.day)
-        new_train["Month"] = str(today.month)
-        new_train["Year"] = str(today.year)
+        new_train["Day"] = int(today.day)
+        new_train["Month"] = int(today.month)
+        new_train["Year"] = int(today.year)
         new_train["Departure"] = "07:05"
         new_train["Arrival"] = "08:07"
         new_train["Type"] = "TER HDF"
@@ -112,9 +112,9 @@ def lilleaulnoye(temp_db_path):
         new_train = {}
         new_train["Origin"] = "Aulnoye-Aymeries"
         new_train["Destination"] = "Lille Flandres"
-        new_train["Day"] = str(today.day)
-        new_train["Month"] = str(today.month)
-        new_train["Year"] = str(today.year)
+        new_train["Day"] = int(today.day)
+        new_train["Month"] = int(today.month)
+        new_train["Year"] = int(today.year)
         new_train["Departure"] = "17:52"
         new_train["Arrival"] = "18:55"
         new_train["Type"] = "TER HDF"
@@ -124,9 +124,6 @@ def lilleaulnoye(temp_db_path):
         with open(temp_db_path, 'w') as json_file:
                 json.dump(temp_db, json_file)
         st.rerun()
-        
-        
-        
         
 
 def displayTempDB(temp_db_path):
