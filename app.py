@@ -2,15 +2,18 @@ import pandas as pd
 import json
 from shiny import App, render, ui, reactive
 import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
 import faicons as fa
+import numpy as np
 
 with open('database.json', 'r') as json_input:
     json_db = json.load(json_input)
-df = pd.DataFrame(json_db["trainList"])
+init_df = pd.DataFrame(json_db["trainList"])
 
 app_ui = ui.page_fluid(
     ui.layout_sidebar(ui.sidebar(
-            ui.input_selectize("year", "Select Year", choices=["All"] + sorted(df["Year"].unique().tolist())),
+            ui.input_selectize("year", "Select Year", choices=["All"] + sorted(init_df["Year"].unique().tolist())),
+            ui.input_selectize("type", "Select Train type", choices=["All"] + sorted(init_df["Type"].unique().tolist())),
             width=300),
     ui.layout_columns(
         ui.value_box(
@@ -46,17 +49,24 @@ app_ui = ui.page_fluid(
     ui.output_text("averagerelative"),
     ui.output_text("medianrelative"),
     ui.output_text("maxrelative"),
-    ui.output_plot("traintaken_pl")
+    ui.layout_columns(ui.output_plot("traintaken_pl"),
+    ui.output_plot("piedelay"))
 ))
 
 # Define the server logic
 def server(input, output, session):
     @reactive.calc
     def filtered_data():
-        if input.year() == "All":
+        with open('database.json', 'r') as json_input:
+            json_db = json.load(json_input)
+        df = pd.DataFrame(json_db["trainList"])
+        if input.year() != "All":
+            df =  df[df["Year"] == int(input.year())]
+        
+        if input.type() == "All":
             return df
         else:
-            return df[df["Year"] == int(input.year())]
+            return df[df["Type"] == input.type()]
 
     @output
     @render.text
@@ -110,7 +120,7 @@ def server(input, output, session):
     @render.text
     def nstation():
         total = filtered_data()
-        unique_values = pd.concat([df['Origin'], df['Destination']]).nunique()
+        unique_values = pd.concat([total['Origin'], total['Destination']]).nunique()
         return unique_values
     
     @output
@@ -160,6 +170,32 @@ def server(input, output, session):
         plt.xticks(rotation=45)
         plt.tight_layout()
 
+        return fig
+    
+    @output
+    @render.plot
+    def piedelay():
+        df = filtered_data()
+        
+        bins = [-float('inf'), -1, 1, 5, 10, 30, float('inf')]
+        labels = ['Early', 'On time', 'Low delay (<5 min)', 
+                'Delay (between 5 and 10)', 'Big delay (between 10 and 30)', 'Very big delay (>30 min)']
+
+        df['Catégorie'] = pd.cut(df['Delay'], bins=bins, labels=labels)
+
+        category_counts = df['Catégorie'].value_counts()
+        category_counts = category_counts.reindex(labels, fill_value=0)
+
+        colors = mcolors.LinearSegmentedColormap.from_list("green_to_red", ["green", "yellow", "red"])(np.linspace(0, 1, len(labels)))
+        label_color_dict = {label: color for label, color in zip(labels, colors)}
+        colors_for_plot = [label_color_dict[label] for label in category_counts.index]
+        fig, ax = plt.subplots()
+        #ax.pie(category_counts, labels=category_counts.index, autopct='%1.1f%%', colors=colors_for_plot)
+        wedges, texts, autotexts = ax.pie(category_counts, colors=colors, shadow=True, autopct='%1.1f%%')
+        plt.legend(wedges, labels, title="Categories", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1))
+        ax.set_title("Delay pie chart")
+        plt.tight_layout()
+        
         return fig
 
 
