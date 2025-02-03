@@ -6,6 +6,11 @@ import matplotlib.colors as mcolors
 import faicons as fa
 import numpy as np
 
+#---------------- TO DO ---------------#
+#ADD 2 colonnes, une pour chaque, en donnant l'axe sur lequel ça s'est produit (Genre Lille-Aulnoye)
+#Utiliser des check box au lieu des selectize
+#Voir comment update auto le df pour la selection des données
+
 with open('database.json', 'r') as json_input:
     json_db = json.load(json_input)
 init_df = pd.DataFrame(json_db["trainList"])
@@ -43,12 +48,7 @@ app_ui = ui.page_fluid(
         ),
         fill=False,
     ),
-    #ui.output_text("meandelay"),
-    ui.output_text("mediandelay"),
-    ui.output_text("maxdelay"),
-    ui.output_text("averagerelative"),
-    ui.output_text("medianrelative"),
-    ui.output_text("maxrelative"),
+    ui.output_plot("table"),
     ui.layout_columns(ui.output_plot("traintaken_pl"),
     ui.output_plot("piedelay"))
 ))
@@ -95,7 +95,7 @@ def server(input, output, session):
     @output
     @render.text
     def speed():
-        total = round(filtered_data()["Distance"].mean(), 2)
+        total = round(filtered_data()["Speed"].mean(), 2)
         return f"{total} km/h"
     
     @output
@@ -156,14 +156,13 @@ def server(input, output, session):
             grouped_data = data.groupby(["Year", "Month"]).size().reset_index(name="count")
             grouped_data["year_month"] = grouped_data["Year"].astype(str) + "-" + grouped_data["Month"].astype(str).str.zfill(2)
             x_axis = grouped_data["year_month"]
-            title = "Train taken by month"
         else:
             grouped_data = data.groupby("Month").size().reset_index(name="count")
             x_axis = grouped_data["Month"]
-            title = "Train taken by month"
-
+            
+        title = "Train taken by month"
         fig, ax = plt.subplots()
-        ax.bar(x_axis, grouped_data["count"], color="skyblue")
+        ax.plot(x_axis, grouped_data["count"], color="skyblue")
         ax.set_xlabel("Month")
         ax.set_ylabel("Number of train taken")
         ax.set_title(title)
@@ -194,6 +193,48 @@ def server(input, output, session):
         wedges, texts, autotexts = ax.pie(category_counts, colors=colors, shadow=True, autopct='%1.1f%%')
         plt.legend(wedges, labels, title="Categories", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1))
         ax.set_title("Delay pie chart")
+        plt.tight_layout()
+        
+        return fig
+    
+    @output
+    @render.plot
+    def table():
+        
+        df = filtered_data()
+        
+        stats = {
+            " ": ["Max", "Mean", "Median"],
+            "Delay [min]": [
+                df["Delay"].max(),
+                round(df["Delay"].mean(), 2),
+                df["Delay"].median()],
+            "Relative Duration [%]": [
+                df["RelativeDuration"].max(),
+                round(df["RelativeDuration"].mean(), 2),
+                df["RelativeDuration"].median()],
+        }
+
+        stats_df = pd.DataFrame(stats)
+
+        fig, ax = plt.subplots(figsize=(8, 4))
+        ax.axis("off")
+
+        table = ax.table(
+            cellText=stats_df.values,
+            colLabels=stats_df.columns,
+            cellLoc="center",
+            loc="center",
+            colColours=["#f7f7f7"] * len(stats_df.columns),
+            cellColours=[["#e9e9e9"] * len(stats_df.columns)] * len(stats_df)
+        )
+
+        table.auto_set_font_size(False)
+        table.set_fontsize(12)
+        table.scale(1.2, 1.2)
+
+        plt.title("Delay stats", pad=20, fontsize=14, fontweight="bold")
+
         plt.tight_layout()
         
         return fig

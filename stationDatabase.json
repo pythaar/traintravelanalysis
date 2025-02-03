@@ -1,5 +1,5 @@
-{"stations": ["Lille Flandres", "Lille Europe", "Lorient", "Paris Gare du Nord", "Paris Montparnasse", "Rennes", "Aulnoye-Aymeries", "Abbeville", "Amiens", "Saint-Quentin", "Albert", "Corbie", "Vannes", "Valenciennes", "Londres", "Quimper", "Redon"],
- "Lorient": {"Paris Montparnasse": 544.328, "Quimper": 65.347, "Redon":108.093, "Rennes":179.678, "Vannes":53.692},
+{"stations": ["Abbeville", "Albert", "Amiens", "Aulnoye-Aymeries", "Corbie", "Lille Europe", "Lille Flandres", "Londres", "Lorient", "Nantes", "Paris Gare du Nord", "Paris Montparnasse", "Quimper", "Redon", "Rennes", "Saint-Quentin", "Valenciennes", "Vannes"],
+ "Lorient": {"Nantes": 189.027, "Paris Montparnasse": 544.328, "Quimper": 65.347, "Redon":108.093, "Rennes":179.678, "Vannes":53.692},
  "Paris Montparnasse": {"Quimper": 609.675, "Redon": 436.235, "Rennes": 364.65, "Vannes":490.636},
  "Quimper": {"Redon":173.44, "Rennes":245.025, "Vannes": 119.039},
  "Redon": {"Rennes": 71.585, "Vannes": 54.401},
@@ -12,4 +12,5 @@
  "Corbie": {"Lille Flandres": 111.49, "Longueau": 13.467},
  "Lille Flandres": {"Longueau": 127.957, "Paris Gare du Nord":224.828, "Valenciennes": 47.008},
  "Aulnoye-Aymeries": {"Saint-Quentin": 62.603, "Lille Flandres": 81.476, "Valenciennes": 34.468, "Paris Gare du Nord": 215.64},
- "Lille Europe": {"Londres": 241.0, "Rennes": 647.21}} 
+ "Lille Europe": {"Londres": 241.0, "Nantes": 667.437, "Rennes": 647.21},
+ "Nantes": {"Redon": 80.934}} 

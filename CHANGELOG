@@ -1,3 +1,9 @@
+R0.3.1 - 03/02/2025
+ - Add Nantes (from Lorient and Lille Europe)
+ - Add table for max mean median datas in stats
+ - Fix average speed data
+ - Change train number taken bar plot to classical plot
+
 R0.3.0 - 29/01/2025
  - Station database change: Add distance. Get distance using alphabetical order (.sort() method).
  - Distance are computed with open data sncf and carto tchoo database, using PK.
