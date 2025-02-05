@@ -7,18 +7,44 @@ import faicons as fa
 import numpy as np
 
 #---------------- TO DO ---------------#
-#ADD 2 colonnes, une pour chaque, en donnant l'axe sur lequel ça s'est produit (Genre Lille-Aulnoye)
-#Utiliser des check box au lieu des selectize
 #Voir comment update auto le df pour la selection des données
+#Map qui montre les trajets, plus pk pas un dégradé selon le nombre -> construire la database. Utiliser la database from rnf
 
 with open('database.json', 'r') as json_input:
     json_db = json.load(json_input)
 init_df = pd.DataFrame(json_db["trainList"])
 
+unique_years = sorted(init_df["Year"].unique().tolist())
+unique_types = sorted(init_df["Type"].unique().tolist())
+
+def minToString(minutes):
+    heures = int(minutes // 60)
+    mins_restantes = int(minutes % 60)
+    
+    if heures == 0:
+        return f"{mins_restantes} mins"
+    elif mins_restantes == 0:
+        return f"{heures}h"
+    else:
+        return f"{heures}h {mins_restantes}mins"
+    
+def getOriginDestinationMax(df, column, text, unit):
+    
+    max_row = df.loc[df[column].idxmax()]
+    col_max = max_row[column]
+    origine_max = max_row['Origin']
+    destination_max = max_row['Destination']
+    if unit == 'hm':
+        return f"Max {text}: {minToString(col_max)}, during {origine_max} - {destination_max}"
+    else:
+        return f"Max {text}: {col_max}{unit}, during {origine_max} - {destination_max}"
+    
+
+
 app_ui = ui.page_fluid(
     ui.layout_sidebar(ui.sidebar(
-            ui.input_selectize("year", "Select Year", choices=["All"] + sorted(init_df["Year"].unique().tolist())),
-            ui.input_selectize("type", "Select Train type", choices=["All"] + sorted(init_df["Type"].unique().tolist())),
+            ui.input_checkbox_group("years", "Select years", choices=unique_years, selected=[2025]),
+            ui.input_checkbox_group("types", "Select train types", choices=unique_types, selected=unique_types),
             width=300),
     ui.layout_columns(
         ui.value_box(
@@ -48,9 +74,14 @@ app_ui = ui.page_fluid(
         ),
         fill=False,
     ),
-    ui.output_plot("table"),
-    ui.layout_columns(ui.output_plot("traintaken_pl"),
-    ui.output_plot("piedelay"))
+    ui.layout_columns(ui.output_plot("traintaken_pl"), ui.output_plot("table")),
+    ui.layout_columns(ui.output_plot("piedelay"), ui.output_plot("delayevolv")),
+    ui.output_text("factos"),
+    ui.output_text("factos1"),
+    ui.output_text("factos2"),
+    ui.output_text("factos3"),
+    ui.output_text("factos4"),
+    
 ))
 
 # Define the server logic
@@ -60,13 +91,10 @@ def server(input, output, session):
         with open('database.json', 'r') as json_input:
             json_db = json.load(json_input)
         df = pd.DataFrame(json_db["trainList"])
-        if input.year() != "All":
-            df =  df[df["Year"] == int(input.year())]
-        
-        if input.type() == "All":
-            return df
-        else:
-            return df[df["Type"] == input.type()]
+        yearsList = list(map(int, input.years()))
+        df = df[df["Year"].isin(yearsList)]
+        df = df[df["Type"].isin(input.types())]
+        return df
 
     @output
     @render.text
@@ -147,23 +175,40 @@ def server(input, output, session):
         total = filtered_data()["RelativeDuration"].max()
         return f"Max relative duration: {total} %"
     
+    @render.text
+    def factos():
+        df = filtered_data()
+        return "Facts:"
+    @render.text
+    def factos1():
+        df = filtered_data()
+        return getOriginDestinationMax(df, "Delay", "delay", "hm")
+    @render.text
+    def factos2():
+        df = filtered_data()
+        return getOriginDestinationMax(df, "RelativeDuration", "relative duration", "%")
+    @render.text
+    def factos3():
+        df = filtered_data()
+        return getOriginDestinationMax(df, "Distance", "distance", "km")
+    @render.text
+    def factos4():
+        df = filtered_data()
+        return  getOriginDestinationMax(df, "TravelTime", "travel time", "hm")   
+
     @output
     @render.plot
     def traintaken_pl():
         data = filtered_data()
         
-        if input.year() == "All":
-            grouped_data = data.groupby(["Year", "Month"]).size().reset_index(name="count")
-            grouped_data["year_month"] = grouped_data["Year"].astype(str) + "-" + grouped_data["Month"].astype(str).str.zfill(2)
-            x_axis = grouped_data["year_month"]
-        else:
-            grouped_data = data.groupby("Month").size().reset_index(name="count")
-            x_axis = grouped_data["Month"]
+        grouped_data = data.groupby(["Year", "Month"]).size().reset_index(name="count")
+        grouped_data["year_month"] = grouped_data["Month"].astype(str).str.zfill(2) + "-" + grouped_data["Year"].astype(str)
+        x_axis = grouped_data["year_month"]
             
         title = "Train taken by month"
         fig, ax = plt.subplots()
         ax.plot(x_axis, grouped_data["count"], color="skyblue")
-        ax.set_xlabel("Month")
+        ax.set_xlabel("Date")
         ax.set_ylabel("Number of train taken")
         ax.set_title(title)
         plt.xticks(rotation=45)
@@ -209,15 +254,23 @@ def server(input, output, session):
                 df["Delay"].max(),
                 round(df["Delay"].mean(), 2),
                 df["Delay"].median()],
-            "Relative Duration [%]": [
+            "Relative duration [%]": [
                 df["RelativeDuration"].max(),
                 round(df["RelativeDuration"].mean(), 2),
                 df["RelativeDuration"].median()],
+            "Distance [km]": [
+                df["Distance"].max(),
+                round(df["Distance"].mean(), 2),
+                df["Distance"].median()],
+            "Travel time": [
+                minToString(df["TravelTime"].max()),
+                minToString(df["TravelTime"].mean()),
+                minToString(df["TravelTime"].median())]
         }
 
         stats_df = pd.DataFrame(stats)
 
-        fig, ax = plt.subplots(figsize=(8, 4))
+        fig, ax = plt.subplots()
         ax.axis("off")
 
         table = ax.table(
@@ -225,7 +278,7 @@ def server(input, output, session):
             colLabels=stats_df.columns,
             cellLoc="center",
             loc="center",
-            colColours=["#f7f7f7"] * len(stats_df.columns),
+            colColours=["#87CEEB"] * len(stats_df.columns),
             cellColours=[["#e9e9e9"] * len(stats_df.columns)] * len(stats_df)
         )
 
@@ -237,6 +290,41 @@ def server(input, output, session):
 
         plt.tight_layout()
         
+        return fig
+    
+    @output
+    @render.plot
+    def delayevolv():
+        df = filtered_data()
+        
+        bins = [-float('inf'), -1, 1, 5, 10, 30, float('inf')]
+        labels = ['Early', 'On time', 'Low delay (<5 min)', 
+                'Delay (between 5 and 10)', 'Big delay (between 10 and 30)', 'Very big delay (>30 min)']
+
+        df['DelayCat'] = pd.cut(df['Delay'], bins=bins, labels=labels)
+        grouped = df.groupby(['Month', 'Year', 'DelayCat']).size().unstack(fill_value=0)
+        grouped_percentage = grouped.div(grouped.sum(axis=1), axis=0) * 100
+        couples_mois_annee = grouped_percentage.index.to_list()
+        couples_mois_annee.sort(key=lambda x: (x[1], x[0])) 
+        grouped_percentage = grouped_percentage.loc[couples_mois_annee]
+        
+        colors = mcolors.LinearSegmentedColormap.from_list("green_to_red", ["green", "yellow", "red"])(np.linspace(0, 1, len(labels)))
+        fig, ax = plt.subplots()
+        labels_x = [str(month).zfill(2)+ "-" + str(year) for month, year in grouped_percentage.index]
+
+        for i, category in enumerate(grouped_percentage.columns):
+            ax.plot(labels_x, grouped_percentage[category], label=category, color=colors[i])
+
+        ax.set_xlabel('Date')
+        ax.set_ylabel('Delay [%]')
+        ax.set_title('Delay evolution')
+        #ax.legend(title='Categories', bbox_to_anchor=(1.05, 1), loc='upper left')
+
+        plt.xticks(rotation=45)
+        #ax.grid(True, linestyle='--', alpha=0.6)
+
+        plt.tight_layout()
+
         return fig
 
 

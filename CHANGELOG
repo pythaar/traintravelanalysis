@@ -1,3 +1,8 @@
+R0.3.2 - 05/02/2025
+ - Select year and type with check box, allowing multiple choices
+ - Add facts
+ - Add delay evolution graph
+
 R0.3.1 - 03/02/2025
  - Add Nantes (from Lorient and Lille Europe)
  - Add table for max mean median datas in stats
