@@ -1,3 +1,9 @@
+R0.3.3 - 12/02/2025
+ - Fix the delay bug when the train arriving after 00:00 when planned before
+ - Fix delay display when the train is in advance
+ - Add travels
+ - Reverse table in streamlit app and add Speed
+
 R0.3.2 - 05/02/2025
  - Select year and type with check box, allowing multiple choices
  - Add facts

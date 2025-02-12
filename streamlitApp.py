@@ -70,7 +70,7 @@ def addNewTrain(temp_db_path, station_db):
     date = add_train.date_input('Date', format='DD/MM/YYYY')
     departure = add_train.time_input('Departure Time')
     arrival = add_train.time_input('Arrival Time (Planned)')
-    train_type = add_train.selectbox("Train type", ("TER HDF", "TGV INOUI", "BREIZHGO", "OUIGO", "Eurostar"))
+    train_type = add_train.selectbox("Train type", ("TER HDF", "TGV INOUI", "BREIZHGO", "OUIGO", "Eurostar", "Lex", "TER AURA", "TGV Lyria"))
     price = add_train.number_input('Price')
     if add_train.button('Add train'):
         new_train = toDict(origin, destination, date, departure, arrival, train_type, price)
