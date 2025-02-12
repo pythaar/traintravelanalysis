@@ -177,7 +177,6 @@ def server(input, output, session):
     
     @render.text
     def factos():
-        df = filtered_data()
         return "Facts:"
     @render.text
     def factos1():
@@ -248,16 +247,16 @@ def server(input, output, session):
         
         df = filtered_data()
         
-        stats = {
+        """stats = {
             " ": ["Max", "Mean", "Median"],
             "Delay [min]": [
                 df["Delay"].max(),
                 round(df["Delay"].mean(), 2),
                 df["Delay"].median()],
-            "Relative duration [%]": [
-                df["RelativeDuration"].max(),
-                round(df["RelativeDuration"].mean(), 2),
-                df["RelativeDuration"].median()],
+            "Relative duration": [
+                f"{df["RelativeDuration"].max()}%",
+                f"{round(df["RelativeDuration"].mean(), 2)}%",
+                f"{df["RelativeDuration"].median()}%"],
             "Distance [km]": [
                 df["Distance"].max(),
                 round(df["Distance"].mean(), 2),
@@ -266,7 +265,27 @@ def server(input, output, session):
                 minToString(df["TravelTime"].max()),
                 minToString(df["TravelTime"].mean()),
                 minToString(df["TravelTime"].median())]
-        }
+        }"""
+        
+        stats =  {" ": ["Delay [min]", "Relative duration", "Distance [km]", "Travel time", "Speed [km/h]"],
+            "Max": [df["Delay"].max(),
+                    f"{df['RelativeDuration'].max()}%",
+                    df["Distance"].max(),
+                    minToString(df["TravelTime"].max()),
+                    df["Speed"].max()],
+                "Mean": [
+                    round(df["Delay"].mean(), 2),
+                    f"{round(df['RelativeDuration'].mean(), 2)}%",
+                    round(df["Distance"].mean(), 2),
+                    minToString(df["TravelTime"].mean()),
+                    round(df["Speed"].mean(), 2)],
+                "Median": [
+                    df["Delay"].median(),
+                    f"{df['RelativeDuration'].median()}%",
+                    df["Distance"].median(),
+                    minToString(df["TravelTime"].median()),
+                    df["Speed"].median()
+                    ]}
 
         stats_df = pd.DataFrame(stats)
 
