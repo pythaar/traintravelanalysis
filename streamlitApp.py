@@ -141,20 +141,42 @@ def timeToMin(time):
     
     return time.hour*60+time.minute
 
-def computeDelay(ref_time, compared_time):
+def computeDelay(ref_time, compared_time, addDay):
     
     ref_min = timeToMin(ref_time)
     compared_min = timeToMin(compared_time)
-    return compared_min - ref_min
+    if addDay:
+        return compared_min - ref_min + 60*24
+    else:
+        return compared_min - ref_min
+
+
+def computeTravelTime(departure, arrival):
+    
+    arr = datetime.strptime(arrival, "%H:%M").time()
+    dep = datetime.strptime(departure, "%H:%M").time()
+    if arr < dep:
+        return timeToMin(arr) - timeToMin(dep) + 60*24
+    else:
+        return timeToMin(arr) - timeToMin(dep)
 
 def getTextDelay(delay):
     
-    hours = delay // 60
-    mins = delay - hours*60
-    if hours != 0:
-        return "Train delay: " + str(hours) + "h{:02}".format(mins)
+    if delay >= 0:
+        hours = delay // 60
+        mins = delay - hours*60
+        if hours != 0:
+            return "Train delay: " + str(hours) + "h{:02}".format(mins)
+        else:
+            return "Train delay: " + str(mins) + " mins"
     else:
-        return "Train delay: " + str(mins) + " mins"
+        delay = abs(delay)
+        hours = delay // 60
+        mins = delay - hours*60
+        if hours != 0:
+            return "Train advance: " + str(hours) + "h{:02}".format(mins)
+        else:
+            return "Train advance: " + str(mins) + " mins"
     
 def deleteTrain(temp_db, temp_db_path, train_idx):
 
@@ -190,7 +212,8 @@ def updateTrain(temp_db_path, db_path, station_db_path):
         planned_arrival = datetime.strptime(train["Arrival"], "%H:%M").time()
         real_arrival = mod_train.time_input('Real arrival time', value=planned_arrival)
         comment = mod_train.text_input('Comment')
-        delay = computeDelay(planned_arrival, real_arrival)
+        addDay = mod_train.checkbox("The planned arrival was the day before the real arrival")
+        delay = computeDelay(planned_arrival, real_arrival, addDay)
         output_delay = getTextDelay(delay)
         mod_train.caption(output_delay)
         if mod_train.button("Apply"):
@@ -201,9 +224,7 @@ def updateTrain(temp_db_path, db_path, station_db_path):
             train["Comment"] = comment
             distance = getDistance(train["Origin"], train["Destination"], station_db_path)
             train["Distance"] = distance
-            arr = datetime.strptime(train["RealArrival"], "%H:%M").time()
-            dep = datetime.strptime(train["Departure"], "%H:%M").time()
-            TravelTime = timeToMin(arr) - timeToMin(dep)
+            TravelTime = computeTravelTime(train["Departure"], train["RealArrival"])
             train["TravelTime"] = TravelTime
             train["Speed"] = round(distance/(TravelTime/60),2)
             train["RelativeDuration"] = round((TravelTime / (TravelTime - delay))*100,2)
