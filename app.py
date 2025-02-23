@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import faicons as fa
 import numpy as np
+from datetime import datetime
 
 #---------------- TO DO ---------------#
 #Voir comment update auto le df pour la selection des données
@@ -38,6 +39,44 @@ def getOriginDestinationMax(df, column, text, unit):
         return f"Max {text}: {minToString(col_max)}, during {origine_max} - {destination_max}"
     else:
         return f"Max {text}: {col_max}{unit}, during {origine_max} - {destination_max}"
+    
+def getOriginDestinationMin(df):
+    
+    min_row = df.loc[df['Delay'].idxmin()]
+    col_min = min_row['Delay']
+    origine_min = min_row['Origin']
+    destination_min = min_row['Destination']
+    return f"Earliest train: {col_min*-1} mins in advance, during {origine_min} - {destination_min}"
+
+def getMaxPerDay(df, column, name, unit):
+    
+    df['Date'] = pd.to_datetime(df[['Year', 'Month', 'Day']])
+    dfmax_value = df.groupby('Date')[column].sum()
+    date_max_value = dfmax_value.idxmax()
+    max_value = round(dfmax_value.max(), 3)
+    #date_max_distance.strftime('%d/%m/%Y')
+    if unit == 'hm':
+        return f"Max {name} in a day: {minToString(max_value)}"
+    else:
+        return f"Max {name} in a day: {max_value}{unit}"
+    
+def getNDaysSpent(yearList):
+    
+    ndays = 0
+    today = datetime.now()
+    actual_year = today.year
+    for year in yearList:
+        if year == 2024:
+            ndays += 19
+        elif year == actual_year:
+            year_start = datetime(actual_year, 1, 1)
+            ndays += (today - year_start).days + 1
+        else:
+            if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+                ndays += 366
+            else:
+                ndays += 365
+    return ndays
     
 
 
@@ -77,10 +116,15 @@ app_ui = ui.page_fluid(
     ui.layout_columns(ui.output_plot("traintaken_pl"), ui.output_plot("table")),
     ui.layout_columns(ui.output_plot("piedelay"), ui.output_plot("delayevolv")),
     ui.output_text("factos"),
+    ui.output_text("earliest"),
     ui.output_text("factos1"),
     ui.output_text("factos2"),
     ui.output_text("factos3"),
     ui.output_text("factos4"),
+    ui.output_text("factos5"),
+    ui.output_text("factos6"),
+    ui.output_text("kmperday"),
+    ui.output_text("timeperday"),
     
 ))
 
@@ -179,6 +223,10 @@ def server(input, output, session):
     def factos():
         return "Facts:"
     @render.text
+    def earliest():
+        df = filtered_data()
+        return getOriginDestinationMin(df)
+    @render.text
     def factos1():
         df = filtered_data()
         return getOriginDestinationMax(df, "Delay", "delay", "hm")
@@ -193,7 +241,28 @@ def server(input, output, session):
     @render.text
     def factos4():
         df = filtered_data()
-        return  getOriginDestinationMax(df, "TravelTime", "travel time", "hm")   
+        return  getOriginDestinationMax(df, "TravelTime", "travel time", "hm")
+    @render.text
+    def factos5():
+        df = filtered_data()
+        return getMaxPerDay(df, "Distance", "distance", "km")
+    @render.text
+    def factos6():
+        df = filtered_data()
+        return getMaxPerDay(df, "TravelTime", "travel time", "hm")
+    @render.text
+    def kmperday():
+        ndays = getNDaysSpent(list(map(int, input.years())))
+        df = filtered_data()
+        averageperday = round(df['Distance'].sum()/ndays, 2)
+        return f'Average distance per day: {averageperday}km'
+    @render.text
+    def timeperday():
+        ndays = getNDaysSpent(list(map(int, input.years())))
+        df = filtered_data()
+        averageperday = round(df['TravelTime'].sum()/ndays)
+        return f'Average travel time per day: {minToString(averageperday)}'
+        
 
     @output
     @render.plot
