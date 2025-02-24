@@ -125,6 +125,7 @@ app_ui = ui.page_fluid(
     ui.output_text("factos6"),
     ui.output_text("kmperday"),
     ui.output_text("timeperday"),
+    ui.output_plot("compagnytable"),
     
 ))
 
@@ -312,29 +313,44 @@ def server(input, output, session):
     
     @output
     @render.plot
-    def table():
+    def compagnytable():
         
         df = filtered_data()
         
-        """stats = {
-            " ": ["Max", "Mean", "Median"],
-            "Delay [min]": [
-                df["Delay"].max(),
-                round(df["Delay"].mean(), 2),
-                df["Delay"].median()],
-            "Relative duration": [
-                f"{df["RelativeDuration"].max()}%",
-                f"{round(df["RelativeDuration"].mean(), 2)}%",
-                f"{df["RelativeDuration"].median()}%"],
-            "Distance [km]": [
-                df["Distance"].max(),
-                round(df["Distance"].mean(), 2),
-                df["Distance"].median()],
-            "Travel time": [
-                minToString(df["TravelTime"].max()),
-                minToString(df["TravelTime"].mean()),
-                minToString(df["TravelTime"].median())]
-        }"""
+        stats = df.groupby('Type')['Delay'].agg(['count', 'mean', 'max', 'median']).reset_index()
+        stats['mean'] = stats['mean'].round(2)
+        stats = stats.sort_values(by='count', ascending=False)
+        stats.columns = ['Compagny', 'N train', 'Mean Delay', 'Max Delay', 'Median Delay']
+        
+        stats_df = pd.DataFrame(stats)
+
+        fig, ax = plt.subplots()
+        ax.axis("off")
+
+        table = ax.table(
+            cellText=stats_df.values,
+            colLabels=stats_df.columns,
+            cellLoc="center",
+            loc="center",
+            colColours=["#87CEEB"] * len(stats_df.columns),
+            cellColours=[["#e9e9e9"] * len(stats_df.columns)] * len(stats_df)
+        )
+
+        table.auto_set_font_size(False)
+        table.set_fontsize(12)
+        table.scale(1.2, 1.2)
+
+        plt.title("Global stats", pad=20, fontsize=14, fontweight="bold")
+
+        plt.tight_layout()
+        
+        return fig
+    
+    @output
+    @render.plot
+    def table():
+        
+        df = filtered_data()
         
         stats =  {" ": ["Delay [min]", "Relative duration", "Distance [km]", "Travel time", "Speed [km/h]"],
             "Max": [df["Delay"].max(),
@@ -374,7 +390,7 @@ def server(input, output, session):
         table.set_fontsize(12)
         table.scale(1.2, 1.2)
 
-        plt.title("Delay stats", pad=20, fontsize=14, fontweight="bold")
+        plt.title("Global stats", pad=20, fontsize=14, fontweight="bold")
 
         plt.tight_layout()
         

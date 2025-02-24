@@ -1,3 +1,8 @@
+R0.3.4 - 23/02/2025
+ - Add Lyon Part Dieu station and travels
+ - Add facts: earliest train, average distance per day, average traveltime per day
+ - Add statistics for all train compagnies 
+
 R0.3.3 - 12/02/2025
  - Fix the delay bug when the train arriving after 00:00 when planned before
  - Fix delay display when the train is in advance
