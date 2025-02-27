@@ -51,7 +51,7 @@ def getOriginDestinationMin(df):
 def getMaxPerDay(df, column, name, unit):
     
     df['Date'] = pd.to_datetime(df[['Year', 'Month', 'Day']])
-    dfmax_value = df.groupby('Date')[column].sum()
+    dfmax_value = df.groupby('Date', observed=False)[column].sum()
     date_max_value = dfmax_value.idxmax()
     max_value = round(dfmax_value.max(), 3)
     #date_max_distance.strftime('%d/%m/%Y')
@@ -85,6 +85,7 @@ app_ui = ui.page_fluid(
             ui.input_checkbox_group("years", "Select years", choices=unique_years, selected=[2025]),
             ui.input_checkbox_group("types", "Select train types", choices=unique_types, selected=unique_types),
             width=300),
+    ui.h1("Personal train stats", style="text-align: center"),
     ui.layout_columns(
         ui.value_box(
             "Number of train taken", ui.output_ui("ntrain"), showcase=fa.icon_svg("train")
@@ -113,8 +114,8 @@ app_ui = ui.page_fluid(
         ),
         fill=False,
     ),
-    ui.layout_columns(ui.output_plot("traintaken_pl"), ui.output_plot("table")),
-    ui.layout_columns(ui.output_plot("piedelay"), ui.output_plot("delayevolv")),
+    ui.layout_columns(ui.output_plot("traintaken_pl"), (ui.h2("Global stats", style="text-align: center"), ui.output_data_frame("table"))),
+    ui.layout_columns(ui.output_plot("piedelay"), ui.output_plot("delayevolv")), 
     ui.output_text("factos"),
     ui.output_text("earliest"),
     ui.output_text("factos1"),
@@ -125,7 +126,7 @@ app_ui = ui.page_fluid(
     ui.output_text("factos6"),
     ui.output_text("kmperday"),
     ui.output_text("timeperday"),
-    ui.output_plot("compagnytable"),
+    ui.output_data_frame("compagnytable"),
     
 ))
 
@@ -270,7 +271,7 @@ def server(input, output, session):
     def traintaken_pl():
         data = filtered_data()
         
-        grouped_data = data.groupby(["Year", "Month"]).size().reset_index(name="count")
+        grouped_data = data.groupby(["Year", "Month"], observed=False).size().reset_index(name="count")
         grouped_data["year_month"] = grouped_data["Month"].astype(str).str.zfill(2) + "-" + grouped_data["Year"].astype(str)
         x_axis = grouped_data["year_month"]
             
@@ -312,19 +313,27 @@ def server(input, output, session):
         return fig
     
     @output
-    @render.plot
+    @render.data_frame
     def compagnytable():
         
         df = filtered_data()
         
-        stats = df.groupby('Type')['Delay'].agg(['count', 'mean', 'max', 'median']).reset_index()
+        stats = df.groupby('Type', observed=False)['Delay'].agg(['count', 'max', 'min', 'mean', 'median']).reset_index()
         stats['mean'] = stats['mean'].round(2)
-        stats = stats.sort_values(by='count', ascending=False)
-        stats.columns = ['Compagny', 'N train', 'Mean Delay', 'Max Delay', 'Median Delay']
+        stats.columns = ['Compagny', 'N train', 'Max Delay', 'Min Delay',  'Mean Delay', 'Median Delay']
+        stats = stats.sort_values(by='Compagny')
+        
+        statsRela = df.groupby('Type', observed=False)['RelativeDuration'].agg(['mean']).reset_index()
+        statsRela['mean'] = statsRela['mean'].round(2)
+        statsRela.columns = ['Compagny', 'mean rela']
+        statsRela = statsRela.sort_values(by='Compagny')
         
         stats_df = pd.DataFrame(stats)
+        reladf = pd.DataFrame(statsRela)
+        stats_df["Mean Relative Duration [%]"] = reladf['mean rela']
+        stats_df = stats_df.sort_values(by='N train', ascending=False)
 
-        fig, ax = plt.subplots()
+        """fig, ax = plt.subplots()
         ax.axis("off")
 
         table = ax.table(
@@ -342,12 +351,14 @@ def server(input, output, session):
 
         plt.title("Global stats", pad=20, fontsize=14, fontweight="bold")
 
-        plt.tight_layout()
+        plt.tight_layout()"""
         
-        return fig
+        #return fig
+        return render.DataGrid(stats_df)
+        return stats_df
     
     @output
-    @render.plot
+    @render.data_frame
     def table():
         
         df = filtered_data()
@@ -358,13 +369,18 @@ def server(input, output, session):
                     df["Distance"].max(),
                     minToString(df["TravelTime"].max()),
                     df["Speed"].max()],
-                "Mean": [
+            "Min": [df["Delay"].min(),
+                    f"{df['RelativeDuration'].min()}%",
+                    df["Distance"].min(),
+                    minToString(df["TravelTime"].min()),
+                    df["Speed"].min()],
+            "Mean": [
                     round(df["Delay"].mean(), 2),
                     f"{round(df['RelativeDuration'].mean(), 2)}%",
                     round(df["Distance"].mean(), 2),
                     minToString(df["TravelTime"].mean()),
                     round(df["Speed"].mean(), 2)],
-                "Median": [
+            "Median": [
                     df["Delay"].median(),
                     f"{df['RelativeDuration'].median()}%",
                     df["Distance"].median(),
@@ -374,7 +390,7 @@ def server(input, output, session):
 
         stats_df = pd.DataFrame(stats)
 
-        fig, ax = plt.subplots()
+        """fig, ax = plt.subplots()
         ax.axis("off")
 
         table = ax.table(
@@ -394,7 +410,8 @@ def server(input, output, session):
 
         plt.tight_layout()
         
-        return fig
+        return fig"""
+        return render.DataTable(stats_df)
     
     @output
     @render.plot
@@ -406,7 +423,7 @@ def server(input, output, session):
                 'Delay (between 5 and 10)', 'Big delay (between 10 and 30)', 'Very big delay (>30 min)']
 
         df['DelayCat'] = pd.cut(df['Delay'], bins=bins, labels=labels)
-        grouped = df.groupby(['Month', 'Year', 'DelayCat']).size().unstack(fill_value=0)
+        grouped = df.groupby(['Month', 'Year', 'DelayCat'], observed=False).size().unstack(fill_value=0)
         grouped_percentage = grouped.div(grouped.sum(axis=1), axis=0) * 100
         couples_mois_annee = grouped_percentage.index.to_list()
         couples_mois_annee.sort(key=lambda x: (x[1], x[0])) 

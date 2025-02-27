@@ -6,3 +6,4 @@ nohup.out
 !stationDatabase.json
 database_modif.py
 __pycache__
+*.passwd

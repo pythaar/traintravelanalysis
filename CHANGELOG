@@ -1,3 +1,8 @@
+R0.4.1 - 27/02/2025
+ - Table changes
+ - App now on own domain
+ - Add password to modify database
+
 R0.3.4 - 23/02/2025
  - Add Lyon Part Dieu station and travels
  - Add facts: earliest train, average distance per day, average traveltime per day

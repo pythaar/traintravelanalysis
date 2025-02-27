@@ -194,7 +194,18 @@ def getDistance(origin, destination, db_path):
     list_stations.sort()
     distance = db[list_stations[0]][list_stations[1]]
     
-    return distance   
+    return distance  
+
+def checkPasswd(userpasswd):
+    
+    with open('user.passwd', 'r') as file:
+        stored_password = file.read().strip()
+        print(stored_password)
+    
+    if userpasswd == stored_password:
+        return False
+    else:
+        return True
         
 def updateTrain(temp_db_path, db_path, station_db_path):
     
@@ -216,7 +227,9 @@ def updateTrain(temp_db_path, db_path, station_db_path):
         delay = computeDelay(planned_arrival, real_arrival, addDay)
         output_delay = getTextDelay(delay)
         mod_train.caption(output_delay)
-        if mod_train.button("Apply"):
+        userpasswd = mod_train.text_input('Password', type='password')
+        apply_btn_state = checkPasswd(userpasswd)
+        if mod_train.button("Apply", disabled=apply_btn_state):
             with open(db_path, 'r') as json_file:
                 db = json.load(json_file)
             train["RealArrival"] = real_arrival.strftime("%H:%M")
@@ -340,31 +353,19 @@ def main():
     createJsonIfNot(temp_db_path)
     createDatabaseIfNot(db_path)
     
-    tab1, tab2, tab3 = st.tabs(["Add train", "See database", "Stats"])
-    with tab1:
-        addNewTrain(temp_db_path, station_db)
-        
-        st.subheader('Trains to be updated')
-        displayTempDB(temp_db_path)
-        
-        st.subheader('Update a train')
-        updateTrain(temp_db_path, db_path, station_db)
-        
-        st.subheader('Reccurent trains')
-        lilleaulnoye(temp_db_path)
-        
-        st.subheader('Add expense')
-        addExpenses(db_path)
+    addNewTrain(temp_db_path, station_db)
     
-    with tab2:
-        st.subheader("Database")
-        displayDatabase(db_path)
+    st.subheader('Trains to be updated')
+    displayTempDB(temp_db_path)
     
-    with tab3:
-        st.subheader("Stats")
-        st.divider()
-        st.subheader("Global")
-        displayStats(db_path)
+    st.subheader('Update a train')
+    updateTrain(temp_db_path, db_path, station_db)
+    
+    st.subheader('Reccurent trains')
+    lilleaulnoye(temp_db_path)
+    
+    st.subheader('Add expense')
+    addExpenses(db_path)
     
 if __name__ == "__main__":
     main()
