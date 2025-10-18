@@ -331,7 +331,7 @@ def server(input, output, session):
         stats_df = pd.DataFrame(stats)
         reladf = pd.DataFrame(statsRela)
         stats_df["Mean Relative Duration [%]"] = reladf['mean rela']
-        stats_df = stats_df.sort_values(by='N train', ascending=False)
+        stats_df = stats_df.sort_values(by='N train')
 
         """fig, ax = plt.subplots()
         ax.axis("off")
