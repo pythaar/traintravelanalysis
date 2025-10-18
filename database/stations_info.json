@@ -47,7 +47,7 @@
   "Arras": {
     "Compagny": [
       "TER HDF",
-      "TER HDF, TGV INOUI"
+      "TGV INOUI"
     ],
     "Coords": [
       50.2864957665,
@@ -57,7 +57,7 @@
   "Douai": {
     "Compagny": [
       "TER HDF",
-      "TER HDF, TGV INOUI"
+      "TGV INOUI"
     ],
     "Coords": [
       50.3715821291,
@@ -379,7 +379,7 @@
   "Valenciennes": {
     "Compagny": [
       "TER HDF",
-      "TER HDF, TGV INOUI"
+      "TGV INOUI"
     ],
     "Coords": [
       50.3623050457,
