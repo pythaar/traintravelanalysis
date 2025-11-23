@@ -27,4 +27,4 @@ jobs:
           docker build --no-cache -t traintravelanalysis .
           docker stop traintravelanalysis || true
           docker rm traintravelanalysis || true
-          docker run -d -p 127.0.0.1:8502:8502 -v /home/ubuntu/webApp/deploy/configFiles/config_traintravelanalysis.py:/app/config.py --name traintravelanalysis tgvmaxsearcher
+          docker run -d -p 127.0.0.1:8502:8502 -v /home/ubuntu/webApp/deploy/configFiles/config_traintravelanalysis.py:/app/config.py --name traintravelanalysis traintravelanalysis
