@@ -29,3 +29,14 @@ def add_train(origin, destination, departure, scheduled, arrival, company, comme
             "speed":speed, 
             "relduration":relduration
         })
+        
+def get_today_arrivals():
+        engine = create_engine(DB_URL)
+        query = text("""
+            SELECT *
+            FROM trainsdb
+            WHERE DATE(arrival) = CURRENT_DATE
+        """)
+        with engine.connect() as conn:
+            df = pd.read_sql(query, conn)
+        return df

@@ -8,7 +8,7 @@ from datetime import datetime, timedelta, date
 GIT_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(GIT_PATH)
 from config import USER_PSSWD
-from src.db_management import add_train as add_train_to_db
+from src.db_management import add_train as add_train_to_db, get_today_arrivals
 
 def createJsonIfNot(file_path):
     
@@ -226,6 +226,12 @@ def updateTrain(temp_db_path, stations_distance):
                 json.dump(temp_db, json_file)
             st.rerun()
 
+def displayTodayTrains():
+    
+    df = get_today_arrivals()
+    for i_row, row in df.iterrows():
+        st.text(f'{row["origin"]} -> {row["destination"]}')
+
 def main():
     st.title('Add train to database')
     st.subheader('By Jules aka Pytpyt')
@@ -252,6 +258,9 @@ def main():
     
     st.subheader('Reccurent trains')
     lilleaulnoye(temp_db_path)
+    
+    st.subheader('Today entries')
+    displayTodayTrains()
     
     
 if __name__ == "__main__":
