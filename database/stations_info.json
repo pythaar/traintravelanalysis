@@ -661,5 +661,104 @@
       51.53224223022,
       -0.1267713505869694
     ]
+  },
+  "Paris Gare de l Est": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER FLUO"
+    ],
+    "Coords": [
+      48.8773708732,
+      2.35892610772
+    ]
+  },
+  "Noisy le Sec": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER FLUO"
+    ],
+    "Coords": [
+      48.8967504288,
+      2.45992179718
+    ]
+  },
+  "Vaires Torcy": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER FLUO"
+    ],
+    "Coords": [
+      48.8753517515,
+      2.63981241422
+    ]
+  },
+  "Champagne Ardenne TGV": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER FLUO"
+    ],
+    "Coords": [
+      49.21368002,
+      3.99569433232
+    ]
+  },
+  "Meuse TGV": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER FLUO"
+    ],
+    "Coords": [
+      48.9785063408,
+      5.27371450709
+    ]
+  },
+  "Lorraine TGV": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER FLUO"
+    ],
+    "Coords": [
+      48.9479957006,
+      6.1732863083
+    ]
+  },
+  "Vendenheim": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER FLUO"
+    ],
+    "Coords": [
+      48.6654040014,
+      7.71821812684
+    ]
+  },
+  "Strasbourg": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER FLUO"
+    ],
+    "Coords": [
+      48.5828702552,
+      7.73159495317
+    ]
+  },
+  "Colmar": {
+    "Compagny": [
+      "TER FLUO",
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      48.0731722815,
+      7.34694339731
+    ]
   }
 }

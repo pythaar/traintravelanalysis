@@ -950,5 +950,81 @@
   },
   "Londres": {
     "Lille Europe": 241.0
+  },
+  "Paris Gare de l Est": {
+    "Noisy le Sec": 8.858,
+    "Vaires Torcy": 22.491,
+    "Champagne Ardenne TGV": 136.258,
+    "Meuse TGV": 236.063,
+    "Lorraine TGV": 303.815,
+    "Vendenheim": 428.491,
+    "Strasbourg": 438.101
+  },
+  "Noisy le Sec": {
+    "Vaires Torcy": 13.633,
+    "Champagne Ardenne TGV": 127.4,
+    "Meuse TGV": 227.205,
+    "Lorraine TGV": 294.957,
+    "Vendenheim": 419.633,
+    "Strasbourg": 429.243,
+    "Paris Gare de l Est": 8.858
+  },
+  "Vaires Torcy": {
+    "Champagne Ardenne TGV": 113.767,
+    "Meuse TGV": 213.572,
+    "Lorraine TGV": 281.324,
+    "Vendenheim": 406.0,
+    "Strasbourg": 415.61,
+    "Paris Gare de l Est": 22.491,
+    "Noisy le Sec": 13.633
+  },
+  "Champagne Ardenne TGV": {
+    "Meuse TGV": 99.805,
+    "Lorraine TGV": 167.557,
+    "Vendenheim": 292.233,
+    "Strasbourg": 301.843,
+    "Paris Gare de l Est": 136.258,
+    "Noisy le Sec": 127.4,
+    "Vaires Torcy": 113.767
+  },
+  "Meuse TGV": {
+    "Lorraine TGV": 67.752,
+    "Vendenheim": 192.428,
+    "Strasbourg": 202.038,
+    "Paris Gare de l Est": 236.063,
+    "Noisy le Sec": 227.205,
+    "Vaires Torcy": 213.572,
+    "Champagne Ardenne TGV": 99.805
+  },
+  "Lorraine TGV": {
+    "Vendenheim": 124.676,
+    "Strasbourg": 134.286,
+    "Paris Gare de l Est": 303.815,
+    "Noisy le Sec": 294.957,
+    "Vaires Torcy": 281.324,
+    "Champagne Ardenne TGV": 167.557,
+    "Meuse TGV": 67.752
+  },
+  "Vendenheim": {
+    "Strasbourg": 9.61,
+    "Paris Gare de l Est": 428.491,
+    "Noisy le Sec": 419.633,
+    "Vaires Torcy": 406.0,
+    "Champagne Ardenne TGV": 292.233,
+    "Meuse TGV": 192.428,
+    "Lorraine TGV": 124.676
+  },
+  "Strasbourg": {
+    "Colmar": 65.817,
+    "Paris Gare de l Est": 438.101,
+    "Noisy le Sec": 429.243,
+    "Vaires Torcy": 415.61,
+    "Champagne Ardenne TGV": 301.843,
+    "Meuse TGV": 202.038,
+    "Lorraine TGV": 134.286,
+    "Vendenheim": 9.61
+  },
+  "Colmar": {
+    "Strasbourg": 65.817
   }
 }
