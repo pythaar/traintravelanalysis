@@ -760,5 +760,1169 @@
       48.0731722815,
       7.34694339731
     ]
+  },
+  "Nimes Pont du Gard": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.8156436284,
+      4.50590365394
+    ]
+  },
+  "Montpellier Sud de France": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.594787,
+      3.924623
+    ]
+  },
+  "Villeneuve les Maguelone": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.543755107,
+      3.84991848707
+    ]
+  },
+  "Vic Mireval": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.5007765271,
+      3.79951979059
+    ]
+  },
+  "Frontignan": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.4448833899,
+      3.75895970275
+    ]
+  },
+  "Sete": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.4127986005,
+      3.69660850545
+    ]
+  },
+  "Marseillan-Plage": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.3183527558,
+      3.53590161911
+    ]
+  },
+  "Agde": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.3174870593,
+      3.46668178376
+    ]
+  },
+  "Vias": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.3156903468,
+      3.42574653506
+    ]
+  },
+  "B\u00e9ziers": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.3360511894,
+      3.21931516432
+    ]
+  },
+  "Colombiers": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.3188558068,
+      3.14016176099
+    ]
+  },
+  "Nissan": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.2958203456,
+      3.11700447527
+    ]
+  },
+  "Coursan": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.234032352,
+      3.05124823558
+    ]
+  },
+  "Narbonne": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.1930944923,
+      3.00866693532
+    ]
+  },
+  "Marcorignan": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.2135284628,
+      2.92692197668
+    ]
+  },
+  "L\u00e9zignan": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.2000099281,
+      2.77004345787
+    ]
+  },
+  "Moux": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.1862575273,
+      2.64304345589
+    ]
+  },
+  "Capendu": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.1842886849,
+      2.55425076721
+    ]
+  },
+  "Tr\u00e8bes": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.2056013521,
+      2.4344404591
+    ]
+  },
+  "Carcassonne": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.2182551766,
+      2.35272841812
+    ]
+  },
+  "Pezens": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.245215827,
+      2.26619458213
+    ]
+  },
+  "Bram": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.2437860127,
+      2.11998714351
+    ]
+  },
+  "Pexiora": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.2669879879,
+      2.03289638677
+    ]
+  },
+  "Castelnaudary": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.3120602334,
+      1.9509508202
+    ]
+  },
+  "Avignonet": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.3635418357,
+      1.78830005991
+    ]
+  },
+  "Villefranche-de-Lauragais": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.3979635159,
+      1.7149890608
+    ]
+  },
+  "Villenouvelle": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.4330852711,
+      1.66092369953
+    ]
+  },
+  "Bazi\u00e8ge": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.4532151894,
+      1.62124096344
+    ]
+  },
+  "Montlaur": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.4748352513,
+      1.57850707381
+    ]
+  },
+  "Escalquens": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.5167726668,
+      1.54248928021
+    ]
+  },
+  "Lab\u00e8ge-Village": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.5303235667,
+      1.53311410499
+    ]
+  },
+  "Lab\u00e8ge-Innopole": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.547882703,
+      1.51241865481
+    ]
+  },
+  "Montaudran": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.5733818378,
+      1.48038572033
+    ]
+  },
+  "Toulouse-Matabiau": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO",
+      "TER LIO"
+    ],
+    "Coords": [
+      43.6108524467,
+      1.45435483966
+    ]
+  },
+  "Nimes": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.8325287341,
+      4.36621827191
+    ]
+  },
+  "St Cesaire": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.8135464382,
+      4.32796354299
+    ]
+  },
+  "Milhaud": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.7886200161,
+      4.30336062165
+    ]
+  },
+  "Uchaud": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.7579792438,
+      4.2673648321
+    ]
+  },
+  "Vergeze-Codognan": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.739779463,
+      4.21911332943
+    ]
+  },
+  "Aigues Vives": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.7267243982,
+      4.19365212089
+    ]
+  },
+  "Gallargues": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.7160491531,
+      4.17126434422
+    ]
+  },
+  "Lunel": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.6795857884,
+      4.13115223032
+    ]
+  },
+  "Lunel Viel": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.6811269626,
+      4.09361389978
+    ]
+  },
+  "Valergues Lansargues": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.6727083432,
+      4.0603402385
+    ]
+  },
+  "St Bres Mudaison": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.6607776543,
+      4.02763008454
+    ]
+  },
+  "Baillargues": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.6531388226,
+      4.00676836032
+    ]
+  },
+  "St Aunes": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.6353937185,
+      3.96325823624
+    ]
+  },
+  "Les Mazes le Cres": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.6390715632,
+      3.93863548501
+    ]
+  },
+  "Montpellier St Roch": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.6060910754,
+      3.88275750945
+    ]
+  },
+  "Perpignan": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      42.6962152611,
+      2.87935045083
+    ]
+  },
+  "Rivesaltes": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      42.766340556,
+      2.86775128233
+    ]
+  },
+  "Salses": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      42.8355645658,
+      2.91741290725
+    ]
+  },
+  "Leucate-La Franqui": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      42.9326543754,
+      3.01275420323
+    ]
+  },
+  "Port-la-Nouvelle": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      43.0198673792,
+      3.03871163893
+    ]
+  },
+  "Gruissan-Tournebelle": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      43.1195715553,
+      3.03012078968
+    ]
+  },
+  "Lyon Saint Exupery": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      45.7209360675,
+      5.07587786134
+    ]
+  },
+  "Paris Austerlitz": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.8404952146,
+      2.36703763988
+    ]
+  },
+  "Paris Tolbiac": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.8322075448,
+      2.37450965251
+    ]
+  },
+  "Ivry sur Seine": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.8141891453,
+      2.39168514842
+    ]
+  },
+  "Vitry sur Seine": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.800598698,
+      2.40266225237
+    ]
+  },
+  "Les Ardoines": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.7821626926,
+      2.40956095924
+    ]
+  },
+  "Choisy le Roi": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.7642927566,
+      2.41152976365
+    ]
+  },
+  "Villeneuve le Roi": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.7398849361,
+      2.42640316685
+    ]
+  },
+  "Ablon": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.7252738907,
+      2.41933986086
+    ]
+  },
+  "Athis Mons": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.7123301587,
+      2.40305710084
+    ]
+  },
+  "Juvisy": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.6898003395,
+      2.38241353288
+    ]
+  },
+  "Savigny sur Orge": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.6759577779,
+      2.35195680091
+    ]
+  },
+  "Epinay sur Orge": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.6693316653,
+      2.33195988244
+    ]
+  },
+  "Ste Genevieve des Bois": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.6531136791,
+      2.31329508156
+    ]
+  },
+  "St Michel sur Orge": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.6355505722,
+      2.30685097789
+    ]
+  },
+  "Br\u00e9tigny": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.6062464111,
+      2.30192824716
+    ]
+  },
+  "Marolles en Hurepoix": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.5650907427,
+      2.29103800856
+    ]
+  },
+  "Bouray": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.5332339372,
+      2.29049173516
+    ]
+  },
+  "Lardy": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.5207483478,
+      2.25555260419
+    ]
+  },
+  "Chamarande": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.5143170686,
+      2.21572360766
+    ]
+  },
+  "Etrechy": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.493646549,
+      2.19461724531
+    ]
+  },
+  "Etampes": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.4366628151,
+      2.15900344742
+    ]
+  },
+  "Guillerval": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.3742726481,
+      2.05968345166
+    ]
+  },
+  "Monnerville": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.348311418,
+      2.0321796517
+    ]
+  },
+  "Angerville": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.3114535683,
+      2.00363749063
+    ]
+  },
+  "Boisseaux": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.2564693789,
+      1.97323486467
+    ]
+  },
+  "Toury": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.1931652557,
+      1.93978898136
+    ]
+  },
+  "Chateau Gaillard": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.1412969053,
+      1.91271854938
+    ]
+  },
+  "Artenay": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.080732429,
+      1.88335915345
+    ]
+  },
+  "Chevilly": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      48.0275421344,
+      1.87928364108
+    ]
+  },
+  "Cercottes": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.9865551206,
+      1.88469720466
+    ]
+  },
+  "Les Aubrais Orl\u00e9ans": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.9269144568,
+      1.90630935656
+    ]
+  },
+  "La Chapelle St Mesmin": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.8929889237,
+      1.8270043022
+    ]
+  },
+  "Chaigny Fourneaux Plage": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.8770169108,
+      1.78236689649
+    ]
+  },
+  "St Ay": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.8630470552,
+      1.74976615713
+    ]
+  },
+  "Meung sur Loire": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.8299994282,
+      1.69183003095
+    ]
+  },
+  "Baule": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.8114870264,
+      1.66789900365
+    ]
+  },
+  "Beaugency": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.7784860955,
+      1.62590656598
+    ]
+  },
+  "Mer": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.7059475135,
+      1.50630167352
+    ]
+  },
+  "Suevres": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.6806329985,
+      1.45468213531
+    ]
+  },
+  "Menars": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.6450295661,
+      1.40564097181
+    ]
+  },
+  "La Chaussee St Victor": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.6131784986,
+      1.35442028012
+    ]
+  },
+  "Blois": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.5853636827,
+      1.32360947423
+    ]
+  },
+  "Chouzy": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.5203213781,
+      1.24785732206
+    ]
+  },
+  "Onzain": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.4918116869,
+      1.18612441159
+    ]
+  },
+  "Veuves-Monteaux": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.4756282342,
+      1.12386087513
+    ]
+  },
+  "Limeray": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.4499597318,
+      1.0495916655
+    ]
+  },
+  "Amboise": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.421527642,
+      0.981190078206
+    ]
+  },
+  "Noizay": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.4097368795,
+      0.896467790825
+    ]
+  },
+  "Montlous": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.3910355781,
+      0.816928674631
+    ]
+  },
+  "St Pierre des Corps": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.385857787,
+      0.725129291128
+    ]
+  },
+  "Tours": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.387920661,
+      0.695556792672
+    ]
+  },
+  "Veretz Montlouis": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.3714559418,
+      0.819956989293
+    ]
+  },
+  "Azay sur Cher": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.3651400921,
+      0.860084460662
+    ]
+  },
+  "St Martin le Beau": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.3550756101,
+      0.905859176464
+    ]
+  },
+  "Bl\u00e9r\u00e9 la Croix": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.3378472486,
+      0.987842991909
+    ]
+  },
+  "Chenonceaux Chisseaux": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.3307061221,
+      1.06555867131
+    ]
+  },
+  "Chissay en Touraine": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.3349554614,
+      1.1336838784
+    ]
+  },
+  "Montrichard": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.343805336,
+      1.17180589356
+    ]
+  },
+  "Th\u00e9s\u00e9e": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.3221316129,
+      1.31210289351
+    ]
+  },
+  "St Aignan Noyers": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.2868722029,
+      1.38397837821
+    ]
+  },
+  "Selles sur Cher": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.2818879134,
+      1.54614416445
+    ]
+  },
+  "Gievres": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.2788924298,
+      1.66813604037
+    ]
+  },
+  "Villefranche sur Cher": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.2949424981,
+      1.76850412028
+    ]
+  },
+  "Mennetou sur Cher": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.2689388368,
+      1.87675185713
+    ]
+  },
+  "Vierzon Ville": {
+    "Compagny": [
+      "TER REMI"
+    ],
+    "Coords": [
+      47.2282131577,
+      2.05511588413
+    ]
   }
 }
