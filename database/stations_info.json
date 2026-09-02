@@ -2979,5 +2979,546 @@
       47.6186502789,
       4.33523484335
     ]
+  },
+  "Montrabe": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.644805933,
+      1.52508870889
+    ]
+  },
+  "Gragnague": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.6965261898,
+      1.56781129447
+    ]
+  },
+  "Montastruc-la-Conseillere": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.716216055,
+      1.59909628001
+    ]
+  },
+  "Roqueseriere": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.7509299714,
+      1.61915325585
+    ]
+  },
+  "St-Sulpice": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.7751040383,
+      1.68052645955
+    ]
+  },
+  "Rabastens-Couffouleux": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.8199252658,
+      1.73149523368
+    ]
+  },
+  "Lisle-sur-Tarn": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.8570209896,
+      1.80846379372
+    ]
+  },
+  "Gaillac": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.9065248411,
+      1.89557848693
+    ]
+  },
+  "Tessonnieres": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.9287437792,
+      1.93791287235
+    ]
+  },
+  "Marssac-sur-Tarn": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.9150170805,
+      2.02689499245
+    ]
+  },
+  "Albi-Ville": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.9223469962,
+      2.13778464001
+    ]
+  },
+  "Albi-Madeleine": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.9386203408,
+      2.14102461655
+    ]
+  },
+  "Carmaux": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      44.0488548538,
+      2.15189251142
+    ]
+  },
+  "Tanus": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      44.1006330822,
+      2.31594937984
+    ]
+  },
+  "Naucelle": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      44.1859130849,
+      2.3637187825
+    ]
+  },
+  "Baraqueville-Carcenac-Peyrales": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      44.270603189,
+      2.42814392802
+    ]
+  },
+  "Luc-Primaube": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      44.2921551517,
+      2.554709663
+    ]
+  },
+  "Paraire": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      44.3505075693,
+      2.55811296363
+    ]
+  },
+  "Rodez": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      44.3631903859,
+      2.57785056356
+    ]
+  },
+  "La Gorp": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      44.92874553,
+      -0.496373256254
+    ]
+  },
+  "Bassens Ville": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      44.9013973888,
+      -0.522440511797
+    ]
+  },
+  "Bassens Appontements": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      44.8998558668,
+      -0.522540969313
+    ]
+  },
+  "Cenon": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      44.8558560986,
+      -0.533609160864
+    ]
+  },
+  "Bordeaux Benauge": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      44.8420339302,
+      -0.541616069774
+    ]
+  },
+  "Bordeaux St Jean": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      44.8259231021,
+      -0.55597751649
+    ]
+  },
+  "Talence-Medoquine": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      44.8169107642,
+      -0.598789946133
+    ]
+  },
+  "Pessac": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      44.8043288231,
+      -0.631981201449
+    ]
+  },
+  "Alouette-France": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      44.7933248012,
+      -0.65979686085
+    ]
+  },
+  "Gazinet-Cestas": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      44.7721733664,
+      -0.699274977326
+    ]
+  },
+  "Pierroton": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      44.7372283267,
+      -0.76423110848
+    ]
+  },
+  "Croix-d Hins": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      44.709874303,
+      -0.815110201088
+    ]
+  },
+  "Marcheprime": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      44.6905389989,
+      -0.853747624379
+    ]
+  },
+  "Facture-Biganos": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      44.6371712918,
+      -0.966206293723
+    ]
+  },
+  "Lugos": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      44.4439530678,
+      -0.970059438508
+    ]
+  },
+  "Ychoux": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      44.32915487,
+      -0.94602841823
+    ]
+  },
+  "Labouheyre": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      44.2105871323,
+      -0.921092755274
+    ]
+  },
+  "Solferino": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      44.1454916474,
+      -0.916308235606
+    ]
+  },
+  "Morcenx": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      44.033980529,
+      -0.908365475271
+    ]
+  },
+  "Rion-des-Landes": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      43.9178593795,
+      -0.91768849017
+    ]
+  },
+  "Laluque": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      43.8245872707,
+      -0.967297984148
+    ]
+  },
+  "Dax": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      43.7209005092,
+      -1.05034524565
+    ]
+  },
+  "Puyoo": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      43.5244513148,
+      -0.910254569723
+    ]
+  },
+  "Baits-de-Bearn": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      43.5103109625,
+      -0.845773648803
+    ]
+  },
+  "Orthez": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      43.4840458145,
+      -0.767112937335
+    ]
+  },
+  "Argagnon": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      43.4481113092,
+      -0.678975279212
+    ]
+  },
+  "Lacq": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      43.411842391,
+      -0.627030175076
+    ]
+  },
+  "Artix": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      43.392829127,
+      -0.569894663753
+    ]
+  },
+  "Lescar": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      43.3241176934,
+      -0.436034870943
+    ]
+  },
+  "Pau": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      43.2914678185,
+      -0.369564399783
+    ]
+  },
+  "Assat": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      43.2543249947,
+      -0.294903585709
+    ]
+  },
+  "Coarraze-Nay": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      43.1816226171,
+      -0.241758254998
+    ]
+  },
+  "Montaut-Betharram": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      43.1265720909,
+      -0.198054335609
+    ]
+  },
+  "St-Pe-de-Bigorre": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      43.1013948483,
+      -0.161578833104
+    ]
+  },
+  "Lourdes": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      43.1005744778,
+      -0.0418599779861
+    ]
+  },
+  "Ossun": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      43.1833814266,
+      -0.0212833603486
+    ]
+  },
+  "Tarbes": {
+    "Compagny": [
+      "TGV INOUI",
+      "OUIGO"
+    ],
+    "Coords": [
+      43.2403058584,
+      0.0694814920748
+    ]
   }
 }
