@@ -3520,5 +3520,212 @@
       43.2403058584,
       0.0694814920748
     ]
+  },
+  "St-Agne": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.5792109672,
+      1.44949374857
+    ]
+  },
+  "Empalot": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.5695390366,
+      1.4279659473
+    ]
+  },
+  "Portet-St-Simon": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.5271423053,
+      1.38837924635
+    ]
+  },
+  "Pins-Justaret": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.4788914373,
+      1.39973147791
+    ]
+  },
+  "Venerque-le-Vernet": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.4333180756,
+      1.42589914314
+    ]
+  },
+  "Auterive": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.348892896,
+      1.46858983084
+    ]
+  },
+  "Cintegabelle": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.3052452697,
+      1.52056503731
+    ]
+  },
+  "Saverdun": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.2393788226,
+      1.57069350464
+    ]
+  },
+  "Vernet-d Ariege": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.1893461456,
+      1.61160707321
+    ]
+  },
+  "Pamiers": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.1161131875,
+      1.61959817634
+    ]
+  },
+  "Varilhes": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.0415050085,
+      1.62843237178
+    ]
+  },
+  "St Jean de Verges": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      43.0122071141,
+      1.60807890181
+    ]
+  },
+  "Foix": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      42.9696489968,
+      1.60688417047
+    ]
+  },
+  "St-Paul-St-Antoine": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      42.9193477777,
+      1.64061341621
+    ]
+  },
+  "Tarascon-sur-Ariege": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      42.8494883401,
+      1.59998644389
+    ]
+  },
+  "Les Cabannes": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      42.7864304284,
+      1.68626685095
+    ]
+  },
+  "Luzenac-Garanou": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      42.7643032394,
+      1.75324043022
+    ]
+  },
+  "Ax-les-Thermes": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      42.724771435,
+      1.83346662621
+    ]
+  },
+  "Merens-les-Vals": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      42.6593645683,
+      1.8373366163
+    ]
+  },
+  "Andorre L'Hospitalet": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      42.589502398,
+      1.80002684037
+    ]
+  },
+  "Porte-Puymorens": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      42.5389593623,
+      1.82484226163
+    ]
+  },
+  "Porta": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      42.5217504457,
+      1.8219590098
+    ]
+  },
+  "Latour-de-Carol-Enveitg": {
+    "Compagny": [
+      "TER LIO"
+    ],
+    "Coords": [
+      42.4589159701,
+      1.90443561589
+    ]
   }
 }
